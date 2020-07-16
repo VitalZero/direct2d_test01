@@ -1,0 +1,30 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "C/C++: cl.exe build active file",
+			"command": "cl.exe",
+			"args": [
+				"/Zi",
+				"/EHsc",
+				"/Fe:",
+				"${fileDirname}\\main.exe",
+				"*.cpp",
+				"User32.lib",
+				"D2d1.lib",
+				"Ole32.lib",
+			],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": [
+				"$msCompile"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
