@@ -36,7 +36,7 @@ HRESULT DemoApp::Initialize()
     wcx.style = CS_HREDRAW | CS_VREDRAW;
     wcx.lpfnWndProc = DemoApp::WndProc;
     wcx.cbWndExtra  = sizeof(LONG_PTR);
-    wcx.hInstance = HINST_THISCOMPONENT;
+    wcx.hInstance = GetModuleHandle(nullptr);//HINST_THISCOMPONENT;
     wcx.hCursor = LoadCursor(nullptr, IDI_APPLICATION);
     wcx.lpszClassName = L"D2DDemoApp";
 
@@ -50,7 +50,7 @@ HRESULT DemoApp::Initialize()
     hwnd = CreateWindow(
       L"D2DDemoApp", L"Direct2D Demo App", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
       (UINT)ceil(640.f * dpiX / 96.f), (UINT)ceil(640.f * dpiY / 96.f), nullptr, nullptr, 
-      HINST_THISCOMPONENT, this);
+      wcx.hInstance, this);
 
     hr = hwnd ? S_OK : E_FAIL;
     if(SUCCEEDED(hr))
